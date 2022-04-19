@@ -2,21 +2,21 @@ import React from 'react'
 import './activeQuiz.css'
 import AnswersList from './answerList/answersList'
 
-const ActiveAuiz = (answers) => {
+const ActiveQuiz = ({ answers, question, onAnswerClick, answerNumber, quizLength }) => {
   return (
     <div className='ActiveQuiz'>
       <p className='Question'>
         <span>
-          <strong>2.</strong>&nbsp;
-          Как дела?
+          <strong>{answerNumber}.</strong>&nbsp;
+          {question}
         </span>
-        <small>4 из 12</small>
+        <small>{answerNumber} из {quizLength}</small>
       </p>
       <ul>
-        <AnswersList answers={answers}/>
+        <AnswersList answers={answers} onAnswerClick={onAnswerClick}/>
       </ul>
     </div>
   )
 }
 
-export default ActiveAuiz
+export default ActiveQuiz
