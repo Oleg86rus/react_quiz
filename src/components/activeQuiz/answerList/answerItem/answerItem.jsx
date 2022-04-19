@@ -1,9 +1,13 @@
 import React from 'react'
 import './answerItem.css'
 
-const AnswerItem = ({ answer, onAnswerClick }) => {
+const AnswerItem = ({ answer, onAnswerClick, answerClicked }) => {
+  const cls = ['AnswerItem']
+  if (answerClicked) {
+    cls.push((answerClicked))
+  }
   return (
-    <li className='AnswerItem' onClick={()=>onAnswerClick(answer.id)}>
+    <li className={cls.join(' ')} onClick={()=>onAnswerClick(answer.id)}>
       {answer.text}
     </li>
   )

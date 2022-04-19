@@ -3,8 +3,7 @@ import './quiz.css'
 import ActiveQuiz from '../../components/activeQuiz/activeQuiz'
 
 const Quiz = () => {
-
-  const quiz = [
+    const quiz = [
     {
       question: 'Какого цвета небо?',
       rightAnswerId: 2,
@@ -28,11 +27,31 @@ const Quiz = () => {
       ]
     }
   ]
-  const [question, setQuestion] = useState(quiz)
+  const answerClicked = null
+  
   let activeQuestion = 0
+  const [question, setQuestion] = useState(activeQuestion)
+  const [answer, setAnswer] = useState(answerClicked)
+  const isQuizFinished = () => {
+      return question + 1 === quiz.length
+  }
   const onAnswerClickHendler = (answerId)=> {
-    console.log('Answer ID: ', answerId)
-    activeQuestion += 1
+    if (answerId === quiz[question].rightAnswerId) {
+      setAnswer({[answerId]: 'success'})
+      console.log('Correct answer')
+      const timeout = setTimeout(()=>{
+        if (isQuizFinished()) {
+          console.log('Finished')
+        } else {
+          setQuestion(() => question + 1)
+          setAnswer(null)
+        }
+        clearTimeout(timeout)
+      }, 500)
+    } else {
+      setAnswer({[answerId]: 'error'})
+      console.log('Wrong answer')
+    }
   }
   
   return (
@@ -40,11 +59,12 @@ const Quiz = () => {
       <div className='quizWrapper'>
         <h1>Пройдите опрос</h1>
         <ActiveQuiz
-          answers={quiz[activeQuestion].answers}
-          question={quiz[activeQuestion].question}
+          answers={quiz[question].answers}
+          question={quiz[question].question}
           onAnswerClick={onAnswerClickHendler}
           quizLength={quiz.length}
-          answerNumber={activeQuestion + 1}
+          answerNumber={quiz[question].id}
+          answerClicked={answer}
         />
       </div>
     </div>

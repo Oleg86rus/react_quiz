@@ -2,7 +2,7 @@ import React from 'react'
 import './answersList.css'
 import AnswerItem from './answerItem/answerItem'
 
-const AnswersList = ({ answers, onAnswerClick }) => {
+const AnswersList = ({ answers, onAnswerClick, answerClicked }) => {
   return (
     <ul className='AnswersList'>
       {answers.map((answer, index)=>{
@@ -11,6 +11,7 @@ const AnswersList = ({ answers, onAnswerClick }) => {
             key={index}
             answer={answer}
             onAnswerClick={onAnswerClick}
+            answerClicked={answerClicked ? answerClicked[answer.id] : null}
           />
         )
       })}
