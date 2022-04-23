@@ -7,7 +7,7 @@ const AnswerItem = ({ answer, onAnswerClick, answerClicked }) => {
     cls.push((answerClicked))
   }
   return (
-    <li className={cls.join(' ')} onClick={()=>onAnswerClick(answer.id)}>
+    <li className={cls.join(' ')} onClick={() => onAnswerClick(answer.id)}>
       {answer.text}
     </li>
   )
