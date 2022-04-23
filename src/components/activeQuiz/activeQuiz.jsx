@@ -2,10 +2,17 @@ import React from 'react'
 import './activeQuiz.css'
 import AnswersList from './answerList/answersList'
 
-const ActiveQuiz = ({ answers, question, onAnswerClick, answerNumber, quizLength, answerClicked }) => {
+const ActiveQuiz = ({
+  answers,
+  question,
+  onAnswerClick,
+  answerNumber,
+  quizLength,
+  answerClicked,
+}) => {
   return (
-    <div className='ActiveQuiz'>
-      <p className='Question'>
+    <div className="ActiveQuiz">
+      <p className="Question">
         <span>
           <strong>{answerNumber}.</strong>&nbsp;
           {question}
