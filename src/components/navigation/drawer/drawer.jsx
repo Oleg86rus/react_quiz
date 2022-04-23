@@ -1,7 +1,8 @@
 import React from 'react'
 import './drawer.css'
+import BackDrop from '../../UI/backDrop/backDrop'
 
-const Drawer = ({ isOpen }) => {
+const Drawer = ({ isOpen, onClose }) => {
   const links = [1, 2, 3]
   const renderLinks = () => {
     return links.map((link, index) => {
@@ -19,11 +20,16 @@ const Drawer = ({ isOpen }) => {
     cls.push('close')
   }
   return (
-    <nav className={cls.join(' ')}>
-      <ul>
-        {renderLinks()}
-      </ul>
-    </nav>
+    <>
+      <nav className={cls.join(' ')}>
+        <ul>
+          {renderLinks()}
+        </ul>
+      </nav>
+      {isOpen
+        ? <BackDrop onClick={onClose}/>
+        : null}
+    </>
   )
 }
 
