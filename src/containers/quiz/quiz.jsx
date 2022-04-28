@@ -3,7 +3,7 @@ import './quiz.css'
 import ActiveQuiz from '../../components/activeQuiz/activeQuiz'
 import FinishedQuiz from '../../components/finishedQuiz/finishesdQuiz'
 
-const Quiz = () => {
+const Quiz = (props) => {
   const api = {
     results: {},
     activeQuestion: 0,
@@ -73,7 +73,8 @@ const Quiz = () => {
       setResult(result)
     }
   }
-  
+  //выводит id из адресной строки
+  useState(console.log('Quiz ID = ', props.match.params.id))
   return (
     <div className="quiz">
       <div className="quizWrapper">

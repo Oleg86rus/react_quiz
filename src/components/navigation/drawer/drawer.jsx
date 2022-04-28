@@ -1,14 +1,36 @@
 import React from 'react'
 import './drawer.css'
 import BackDrop from '../../UI/backDrop/backDrop'
+import { NavLink } from 'react-router-dom'
 
 const Drawer = ({ isOpen, onClose }) => {
-  const links = [1, 2, 3]
+  const links = [
+    {
+      to: '/',
+      label: 'Список',
+      exact: true
+    },
+    {
+      to: '/auth',
+      label: 'Авторизация',
+      exact: false
+    },
+    {
+      to: '/quiz-creator',
+      label: 'Создать тест',
+      exact: false
+    }
+  ]
+  const clickHandler = () => {
+    onClose()
+  }
   const renderLinks = () => {
     return links.map((link, index) => {
       return (
         <li key={index}>
-          <a>Link {link}</a>
+          <NavLink to={link.to} exact={link.exact} onClick={clickHandler}>
+            {link.label}
+          </NavLink>
         </li>
       )
     })
